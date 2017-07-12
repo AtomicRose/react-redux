@@ -1,0 +1,50 @@
+
+@font-face {font-family: "iconfont";
+  src: url('fontIcon/iconfont.eot?t=1488357614071'); /* IE9*/
+  src: url('fontIcon/iconfont.eot?t=1488357614071#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('fontIcon/iconfont.woff?t=1488357614071') format('woff'), /* chrome, firefox */
+  url('fontIcon/iconfont.ttf?t=1488357614071') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('fontIcon/iconfont.svg?t=1488357614071#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size: px2rem(30px); /*自定义部分*/
+  color: $color-font-6; /*自定义部分*/
+  font-style:normal; 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bg_wu:before { content: "\e605"; }
+
+.icon-classification:before { content: "\e606"; }
+
+.icon-sex:before { content: "\e607"; }
+
+.icon-name:before { content: "\e608"; }
+
+.icon-card:before { content: "\e609"; }
+
+.icon-hospital:before { content: "\e60a"; }
+
+.icon-id:before { content: "\e60b"; }
+
+.icon-bg_logo:before { content: "\e60c"; }
+
+.icon-icon_yanhzengma:before { content: "\e60d"; }
+
+.icon-icon_shouji:before { content: "\e60e"; }
+
+.icon-age:before { content: "\e60f"; }
+
+.icon-lipei:before { content: "\e610"; }
+
+.icon-date:before { content: "\e611"; }
+
+.icon-ok:before { content: "\e612"; }
+
+.icon-top:before { content: "\e613"; }
+
+.icon-icon-test:before { content: "\e614"; }
+

@@ -1,0 +1,57 @@
+@import "../mixing/fn.scss";
+@import "../mixing/variables.scss";
+
+$header-height: px2rem(88px);
+$header-bg: $brand-primary;
+$header-font-color: #fff;
+$operate-width: px2rem(180px);
+$title-font-size: px2rem(map_get($map-font-size, l));
+$operate-font-size: px2rem(map_get($map-font-size, m));
+
+.header {
+    width: 100%;
+    height: $header-height;
+    line-height: $header-height;
+    font-size: $title-font-size;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    background: $header-bg;
+    color: $header-font-color;
+    .left-operate,
+    .right-operate {
+        height: $header-height;
+        width: $operate-width;
+        line-height: inherit;
+        font-size: $operate-font-size;
+        color: inherit;
+        @include px2rem("padding", 0 $padding-m 0 $padding-m);
+    }
+    .left-operate{
+        text-align: left;
+    }
+    .right-operate{
+        text-align: right;
+    }
+    .middle{
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        height:$header-height;
+        line-height: inherit;
+        text-align: center;
+    }
+    .title{
+        width: 100%;
+        height: $header-height;
+        line-height: inherit;
+        font-size: $title-font-size;
+        color: inherit;
+        text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}

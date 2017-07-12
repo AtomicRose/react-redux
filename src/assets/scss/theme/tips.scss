@@ -1,0 +1,93 @@
+.tips{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  &.header-tips{
+    &:after{
+      content: '';
+      clear: both;
+      display: block;
+    }
+    &.double-line{
+      height: px2rem(120px);
+      padding: px2rem($padding-s) px2rem($padding-l);
+      p{
+        line-height: px2rem(50px);
+      }
+    }
+    background: $color-primary;
+    height: px2rem(80px);
+    line-height: px2rem(80px);
+    text-align: left!important;
+    color: #fff!important;
+    padding: 0 px2rem($padding-l);
+    font-size: px2rem(map_get($map-font-size, xs));
+    >.icon-shiyi{
+      color: #fff;
+      float: left;
+      // width: 5%;
+      min-width: px2rem(60px);
+    }
+    >div{
+      float: left;
+      width: 80%;
+    }
+  }
+  &.mask {
+    background: rgba(0,0,0,0.5);
+  }
+  &.full-screen{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+  }
+  &.rest-screen{
+    flex: 1;
+    background: #fff;
+    padding: px2rem(200px) 0 0 0;
+  }
+  .tips-inner{
+    width: px2rem(400px);
+    margin: auto;
+  }
+  .tips-content{
+    color: $color-primary;    
+    font-size: px2rem(map_get($map-font-size, xm));
+    margin-bottom: px2rem($padding-l);
+  }
+  .tips-img-girl{
+    background: url($tips-g) no-repeat;
+    background-size: cover;
+    width: px2rem(350px);
+    height: px2rem(307px);
+    margin: auto;
+  }
+  .tips-img-boy{
+    background: url($tips-b) no-repeat;
+    background-size: cover;
+    width: px2rem(350px);
+    height: px2rem(307px);
+  }
+
+  .tips-img-ye{
+    background: url($tips-y) no-repeat;
+    background-size: cover;
+    width: px2rem(350px);
+    height: px2rem(307px);}
+  .tips-img-arrow{
+    background: url($agent-arrow) no-repeat;
+    background-size: cover;
+    width: px2rem(391px);
+    height: px2rem(398px);
+    position: absolute;
+    top: 0px;
+    right: px2rem(30px);
+  }
+  .tips-btn{
+    margin-top: px2rem($padding-l);
+    border-radius: px2rem(40px);
+  }
+}

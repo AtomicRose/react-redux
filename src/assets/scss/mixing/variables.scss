@@ -1,0 +1,90 @@
+//主色
+$color-primary: #5ebfb8;
+$color-primary-red: #db525a;
+$color-minor-red: #ee7f79;
+// $color-primary-yellow: #ffdd21;
+
+//辅助色
+$color-main-bg: #f7f7f7;
+$color-main-bg-dark: #f2f2f2;
+$color-border-default: #e1e1e1;
+$color-border-light: #e7e7e7;
+
+//功能色系
+$brand-primary: $color-primary;
+$brand-success: #0b8c1f;
+$brand-default: #a6ebff;
+$brand-info: #009ddb;
+$brand-warning: #f07415;
+$brand-danger: #db525a;
+$brand-link: #036eb8;
+
+//字体色系
+$color-font-3: #333;
+// $color-font-5: #555;
+$color-font-6: #666;
+// $color-font-8: #888;
+$color-font-9: #999;
+$color-font-placeholder: #ccc;
+$color-font-link: #036eb8;
+$color-font-err: #e9545d;
+$color-font-gray: #c1c1c1;
+
+$color-icon: #ed7f7a;
+
+//边距系统
+$padding-s: 10px;
+$padding-m: 20px;
+$padding-l: 30px;
+$padding-xl: 40px;
+
+//字体大小
+$map-font-size: (xxs: 22px, xs: 24px, s: 26px, m: 28px, xm: 30px, l:32px, xl:36px);
+
+//z-index使用
+$z-index-bg:1;
+$z-index-content: 10;
+$z-index-framework: 20;
+$z-index-os: 30;
+$z-index-modal: 40;
+
+//dialog
+$dialog-bg-color:rgb(243,245,245); /* alert,confirm bg color*/
+$toast-body-width: 500px;
+$toast-body-height: 100px;
+$dialog-body-width: 500px;
+$dialog-radius: 8px;
+
+/*header*/
+$header-height: 88px;
+
+/*static img path*/
+// $entry-header: '/vip/static/entry-header.png';
+// $entry-i-1v1: '/vip/static/entry-1v1.png';
+// $entry-i-24: '/vip/static/entry-24.png';
+// $entry-i-bed: '/vip/static/entry-bed.png';
+// $entry-i-expert: '/vip/static/entry-expert.png';
+// $entry-img-tz: '/vip/static/entry-t1.png';
+// $entry-img-hp: '/vip/static/entry-t2.png';
+// $entry-img-yzx: '/vip/static/entry-t3.png';
+// $bookingsuc-header: '/vip/static/bookingsuc-header.png';
+$arrow-img: '/vip/static/149008613155221.png';
+// $clear-icon: '/vip/static/clear-icon.png';
+// $search-icon: '/vip/static/search-icon.png';
+// $del-icon: '/static/del-img.png';
+$p-icon: '/doctor/static/p-icon.png';
+$loading-icon: '/doctor/static/loading.png';
+$bg-icon: '/doctor/static/bgP.png';
+$default-avatar: '/doctor/static/default-avatar.png';
+$bd-avatar: '/doctor/static/149032348521574.png';
+$tips-g: '/doctor/static/tips-g.png';
+$tips-b: '/doctor/static/tips-b.png';
+$tips-y: '/doctor/static/tips-ye.png';
+$assistantbox-b1: '/doctor/static/assistant-bg.png';
+$assistantbox-b2: '/doctor/static/assistant-bg1.png';
+$agent-bg: '/doctor/static/agent-bg.png';
+$search-bg: '/doctor/static/search-bg.png';
+$agent-arrow: '/doctor/static/agent-arrow.png';
+$watermark: '/doctor/static/watermark.png';
+/* avatar */
+$avatar-wh: 150px;

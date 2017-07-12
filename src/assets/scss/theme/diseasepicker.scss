@@ -1,0 +1,101 @@
+@import "../mixing/fn.scss";
+@import "../mixing/variables.scss";
+
+$filter-height: px2rem(80px);
+$cell-height: px2rem(80px);
+$cell-active-bg: $color-border-light;
+.disease-picker {
+    width: 100%;
+    .filter-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: $filter-height;
+        @include px2px('border-bottom', 1px solid $color-border-light);
+        background: #fff;
+        .first,
+        .second {
+            width: 50%;
+            height: $filter-height;
+            line-height: $filter-height;
+            text-align: center;
+            font-size: px2rem(map_get($map-font-size, m));
+            display: inline-block;
+            color: #333;
+            overflow: hidden;
+            @include px2rem('padding', 0 $padding-l 0 $padding-l);
+            span {
+                font-size: inherit;
+                line-height: inherit;
+                display: block;
+                float:left;
+            }
+            span.name {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                width: 70%;
+                padding-right: px2rem(10px);
+                text-align: right;
+            }
+            span.iconfont{
+                width: 30%;
+                text-align: left;
+            }
+            &.active {
+                @include px2rem('border-bottom', 6px solid $brand-primary);
+            }
+        }
+        .first {
+            @include px2px('border-right', 1px solid $color-border-light);
+        }
+    }
+    .results-box {
+        padding-top: $filter-height;
+        width: 100%;
+        .cell {
+            width: 100%;
+            height: $cell-height;
+            overflow: hidden;
+            line-height: $cell-height;
+            @include px2rem('padding', 0 $padding-l 0 $padding-l);
+            font-size: px2rem(map_get($map-font-size, m));
+            color: #333;
+            @include px2px('border-bottom', 1px solid $color-border-light);
+            &.big {
+                height: $cell-height * 1.2;
+            }
+            &.active {
+                background: $cell-active-bg;
+                color: $brand-primary;
+            }
+            &.tip {
+                font-size: px2rem(map_get($map-font-size, xs));
+                color: $color-font-9;
+            }
+        }
+    }
+    .search-box {
+        @include px2px('border', 1px solid $color-border-light);
+        border-radius: px2rem(4px);
+        height: $cell-height;
+        width: 100%;
+        margin-top: $cell-height * 0.1;
+        overflow: hidden;
+        span.iconfont {
+            font-size: px2rem(60px);
+            color: $color-font-6;
+            display: inline-block;
+            float: left;
+        }
+        input {
+            width: 90%;
+            display: inline-block;
+            float: left;
+        }
+    }
+    .hidden {
+        display: none;
+    }
+}
