@@ -8,7 +8,7 @@ const App = ({children, location}) => {
         </div>
     );
 };
-IVYCollect.setOptions({
+window.IVYCollect.setOptions({
     appid: __PROD__
         ? __APP_ID__
         : __APP_ID__ + '-DEV'

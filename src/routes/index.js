@@ -6,16 +6,16 @@ import docRoute from './document/index';
 // 引入需要模块的路由
 import homeRoute from './pages/home';
 
-export default {
-  path : '/',
-  component : require('VIEW/App').default,
-  indexRoute : {
+let r = {
+  path: '/',
+  component: require('VIEW/App').default,
+  indexRoute: {
     component: createLazyViewLoader(cb => {
       require.ensure([], require => cb(require('VIEW/App')));
     })
   },
 
-  childRoutes : [
+  childRoutes: [
     // 加载子模块路由
     docRoute,
     homeRoute,
@@ -32,3 +32,5 @@ export default {
     }
   ]
 };
+
+export default r;

@@ -1,4 +1,4 @@
 export default {
-  initialState : {},
-  children : {}
+  initialState: {},
+  children: {}
 };

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class Doc extends React.PureComponent {
     constructor(props) {

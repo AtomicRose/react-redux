@@ -44,5 +44,5 @@ const boot = (dom) => {
             history={syncHistoryWithStore(browserHistory, store)}
             children={routes}/>
     </Provider>, dom);
-}
+};
 export default boot;
