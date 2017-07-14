@@ -38,7 +38,7 @@ const config = {
   },
   output: {
     path: path.join(common.path.dist, 'static'),
-    publicPath: common.DEPLOY_SERVICE_PATH + '/static'
+    publicPath: common.DEPLOY_SERVICE_PATH + '/static/'
   },
   resolve: {
     extensions: [
@@ -56,7 +56,8 @@ const config = {
       VIEW: path.resolve(common.path.src, 'views'),
       CONSTANT: path.resolve(common.path.src, 'utils/constant'),
       REQUEST: path.resolve(common.path.src, 'utils/request'),
-      SCSS: path.resolve(common.path.src, 'assets/scss')
+      SCSS: path.resolve(common.path.src, 'assets/scss'),
+      IMAGE: path.resolve(common.path.src, 'assets/images')
     }
   },
   resolveLoader: {
@@ -87,10 +88,10 @@ const config = {
       }, {
         test: /\.(png|jpe?g|gif|svg)$/,
         use: {
-          loader: 'url',
+          loader: 'url-loader',
           options: {
             limit: 10240, // 10KB 以下使用 base64
-            name: 'img/[name]-[hash:6].[ext]'
+            name: 'images/[name]-[hash:6].[ext]'
           }
         }
       }, {
