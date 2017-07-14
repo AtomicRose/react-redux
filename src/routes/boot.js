@@ -2,9 +2,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import { AppContainer } from 'react-hot-loader';
-import {Provider} from 'react-redux';
-import {Router, browserHistory} from 'react-router';
-import {syncHistoryWithStore} from 'react-router-redux';
+import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 import store from 'STORE'; // , {history}
 import routes from 'ROUTE';
 // import { initWechatShare } from 'UTIL/wechatShare';
@@ -18,31 +18,31 @@ import routes from 'ROUTE';
  * 请自行查阅相关资料
  */
 if (__DEV__ && __WHY_DID_YOU_UPDATE__) {
-    const {whyDidYouUpdate} = require('why-did-you-update');
-    whyDidYouUpdate(React);
+  const { whyDidYouUpdate } = require('why-did-you-update');
+  whyDidYouUpdate(React);
 }
 if (__DEV__) {
-    window.Perf = require('react-addons-perf');
-    // if (module.hot) {     module.hot.accept('./containers/App', () => {
-    // render(App) }) }
-    console.info('[当前环境] 开发环境');
+  window.Perf = require('react-addons-perf');
+  // if (module.hot) {     module.hot.accept('./containers/App', () => {
+  // render(App) }) }
+  console.info('[当前环境] 开发环境');
 }
 if (__TEST__) {
-    console.info('[当前环境] 测试环境');
+  console.info('[当前环境] 测试环境');
 }
 if (__ALPHA__) {
-    console.info('[当前环境] 预发布环境');
+  console.info('[当前环境] 预发布环境');
 }
 if (__PROD__) {
-    console.info('[当前环境] 生产环境');
+  console.info('[当前环境] 生产环境');
 }
 
 const boot = (dom) => {
-    ReactDOM.render(
-        <Provider store={store}>
-        <Router
-            history={syncHistoryWithStore(browserHistory, store)}
-            children={routes}/>
+  ReactDOM.render(
+    <Provider store={store}>
+      <Router
+        history={syncHistoryWithStore(browserHistory, store)}
+        children={routes} />
     </Provider>, dom);
 };
 export default boot;

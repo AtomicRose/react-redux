@@ -57,22 +57,17 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.1.0",
     "webpack-dev-middleware": "^1.11.0",
-    "webpack-hot-middleware": "^2.18.2"
+    "webpack-hot-middleware": "^2.18.2",
+    "react-addons-perf": "^15.4.2"
   },
   "dependencies": {
-    "cross-env": "^5.0.1",
     "history": "^4.6.2",
-    "jsrsasign": "^7.1.2",
-    "lodash": "^4.15.0",
-    "moment": "^2.18.1",
     "react": "~15.4.2",
-    "react-addons-perf": "^15.4.2",
     "react-dom": "~15.4.2",
     "react-redux": "^5.0.5",
     "react-router": "^3.0.5",
     "react-router-redux": "^4.0.8",
     "redux": "^3.5.2",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "whatwg-fetch": "^2.0.3"
   }

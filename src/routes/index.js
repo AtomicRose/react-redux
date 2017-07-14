@@ -6,7 +6,7 @@ import docRoute from './document/index';
 // 引入需要模块的路由
 import homeRoute from './pages/home';
 
-let r = {
+export default {
   path: '/',
   component: require('VIEW/App').default,
   indexRoute: {
@@ -32,5 +32,3 @@ let r = {
     }
   ]
 };
-
-export default r;
