@@ -6,7 +6,6 @@ import img from 'IMAGE/test.jpg';
 class Doc extends React.PureComponent {
     constructor(props) {
         super(props);
-        console.log(3333);
     }
     render() {
         return (
@@ -15,7 +14,6 @@ class Doc extends React.PureComponent {
                 <div className="ivy-doc"></div>
             </div>
         );
-
     }
 }
 

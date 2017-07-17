@@ -122,3 +122,18 @@ handelChange***() {
 
 * 代码中禁止出现以数字命名的方法```function method1(){}``` , ```function method2(){}``` ……
 
+### 资源引入
+* 在js代码中，使用下面方式引入图片路径
+``` javascript
+import myImg from 'IMAGE/myimg.jpg';
+
+// in jsx code
+<img src={myImg}/>
+```
+
+* 在css样式中，使用相对路径。因为css样式必然在assets目录中，images文件夹也在assets目录中，故采用相对路径即可。webpack默认会转化路径
+
+## 样式定义
+* 所有样式命名采用蛇形命名法，所有字母小写。如```.sub-main-class```
+* 每个页面单独添加页面样式的命名空间（类似页面可以共享一个命名空间）。如```.login-page```。避免和公有样式造成冲突
+* 尽量使用公有样式，减少自定义样式
