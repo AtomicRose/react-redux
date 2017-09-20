@@ -2,9 +2,9 @@
 // 'UTIL/createContainer'
 import createLazyViewLoader from './createLazyViewLoader';
 
-import docRoute from './document/index';
+import docRoute from './Document/index';
 // 引入需要模块的路由
-import homeRoute from './pages/home';
+import homeRoute from './Home/index';
 
 export default {
   path: 'doctor',
@@ -22,13 +22,17 @@ export default {
     // 重定向
     {
       path: 'redirect',
-      component: require('VIEW/Redirect').default
+      component: createLazyViewLoader(cb => {
+        require.ensure([], require => cb(require('VIEW/Redirect')));
+      })
     },
 
     // 无路由匹配的情况一定要放到最后，否则会拦截所有路由
     {
       path: '*',
-      component: require('VIEW/404').default
+      component: createLazyViewLoader(cb => {
+        require.ensure([], require => cb(require('VIEW/404')));
+      })
     }
   ]
 };

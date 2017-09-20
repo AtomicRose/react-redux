@@ -6,7 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const SOURCE_MAP = false;
 const ENV_PRODUCTION = 'production';
@@ -96,21 +97,21 @@ const config = {
         }
       }, {
         test: /\.woff/,
-        loader: 'url?prefix=font/&limit=10000&mimetype=application/font-woff'
+        loader: 'url-loader?prefix=font/&limit=10000&mimetype=application/font-woff'
       }, {
         test: /\.ttf/,
-        loader: 'file?prefix=font/'
+        loader: 'file-loader?prefix=font/'
       }, {
         test: /\.eot/,
-        loader: 'file?prefix=font/'
+        loader: 'file-loader?prefix=font/'
       }, {
         test: /\.svg/,
-        loader: 'file?prefix=font/'
+        loader: 'file-loader?prefix=font/'
       }, {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: ['css-loader', 'postcss-loader', 'sass-loader']
         })
       }
     ]
@@ -174,7 +175,7 @@ if (process.env.NODE_ENV === ENV_DEVELOPMENT) {
   // plugins
   config
     .plugins
-    .push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin(), new ExtractTextPlugin('[name].css'), new HtmlWebpackPlugin({ filename: 'index.html', template: common.path.indexHTML, chunksSortMode: 'none' }), new BrowserSyncPlugin({
+    .push(new DashboardPlugin(), new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin(), new ExtractTextPlugin('[name].css'), new HtmlWebpackPlugin({ filename: 'index.html', template: common.path.indexHTML, chunksSortMode: 'none' }), new BrowserSyncPlugin({
       host: '127.0.0.1',
       port: 9090,
       proxy: 'http://127.0.0.1:9000/',

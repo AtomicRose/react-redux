@@ -23,14 +23,21 @@ npm run start
 访问```http://localhost:9090``` 即可看到应用
 
 ## 编码规范
+
 ### 基本规范
+
 * js/html基本编码规范参考WIKI ```https://wiki.myzd.info/pages/viewpage.action?pageId=3309611``` 和 ```https://wiki.myzd.info/pages/viewpage.action?pageId=3866634```
 * 页面埋点规范参照 ```https://git.myzd.info/common/collect-log/tree/master/h5```
+
 ### react-redux 项目规范
+
 #### 代码风格
+
 * 采用Visual Studio Code自带的format工具, Visual Studio Code版本大于1.3.1
 * 代码缩进采用2个空格（照顾到小屏幕的的用户，@何源海）
+
 #### 语法规范
+
 * 严格使用ES6语法规范
 * 每个js文件只包含一个React组件
 * 组件名称和文件名称一致，采用驼峰命名，开头字母必须大写
@@ -90,10 +97,10 @@ calss Example extends React.PureComponent{
   // ······
   //------------ END -----------------
   // END之后再定义自己的操作方法
-  handelA() {
+  handleA() {
     //
   }
-  handelB() {
+  handleB() {
     //
   }
   // ······
@@ -103,21 +110,13 @@ calss Example extends React.PureComponent{
 * 针对jsx中事件方法的命名
 ``` javascript
 // onClick
-handelClick***() {
-
-}
+handleClick***() {}
 // onFocus
-handelFocus***() {
-
-}
+handleFocus***() {}
 // onBlur
-handelBlur***() {
-
-}
+handleBlur***() {}
 // onChange
-handelChange***() {
-
-}
+handleChange***() {}
 ```
 
 * 代码中禁止出现以数字命名的方法```function method1(){}``` , ```function method2(){}``` ……
@@ -126,7 +125,6 @@ handelChange***() {
 * 在js代码中，使用下面方式引入图片路径
 ``` javascript
 import myImg from 'IMAGE/myimg.jpg';
-
 // in jsx code
 <img src={myImg}/>
 ```
@@ -137,3 +135,14 @@ import myImg from 'IMAGE/myimg.jpg';
 * 所有样式命名采用蛇形命名法，所有字母小写。如```.sub-main-class```
 * 每个页面单独添加页面样式的命名空间（类似页面可以共享一个命名空间）。如```.login-page```。避免和公有样式造成冲突
 * 尽量使用公有样式，减少自定义样式
+* 根据视觉规范，每个项目的主题样式定义在 ```scss/theme/XXX-theme/```目录下，主要是variables.
+* 常用公共样式写在 ```scss/theme/``` 目录下，主要包括normalize, button, cell, layout等项目中使用频繁的公共样式
+* 项目中组件（指的不是react组件，react概念中整个项目都是组件）样式书写在 ```scss/theme/component/``` 目录下，例如dialog, datepicker, tab等，不同项目有自定义风格，且在一个项目中有共通之处的组件。关于组件的定义，请@方柏蜃@何源海
+* 所有页面样式写在 ```src/assets/scss/pages/``` 目录下，并与项目目录结构保持一致
+
+## react + redux 的书写规范
+* action，reducer, store, route, views, service 根据项目树形结构保持目录结构一致，例如路径文件夹命名都为 Document, 相关的内容写在该目录下。
+* 一个action必须为一个文件，且每个action的事务必须保持单例。如：请求列表数据，根据列表数据数量显示不同内容或样式。这里应该是2个action或者只有一个请求列表数据的action，显示不同内容应该在render里面处理
+* views中的树结构应该和routes中的结构一致。对应页面的组成部分（react component）可以放在对应模块的blocks下面。
+* 所有的component function 采用createPureComponent()方法创建。参照```https://gist.github.com/bestmike007/c46fb35ddefc19c616c2aa7d3cf0c226```
+

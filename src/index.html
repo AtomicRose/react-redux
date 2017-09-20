@@ -2,138 +2,145 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>名医主刀</title>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_8ern8tyzw00jxlxr.css">
+  <meta charset="utf-8">
+  <title>名医主刀</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_8ern8tyzw00jxlxr.css">
 </head>
 <!--引入埋点-->
 <script src="//static.myzd.info/h5/collect-h5-1.0.0.min.js"></script>
 <!--移动端UI屏幕大小自适应方案，如果不需要，请删除-->
 <script type="text/javascript">
-    (function (win, lib) {
-        var doc = win.document;
-        var docEl = doc.documentElement;
-        var metaEl = doc.querySelector('meta[name="viewport"]');
-        var flexibleEl = doc.querySelector('meta[name="flexible"]');
-        var dpr = 0;
-        var scale = 0;
-        var tid;
-        var flexible = lib.flexible || (lib.flexible = {});
+  (function (win, lib) {
+    var doc = win.document;
+    var docEl = doc.documentElement;
+    var metaEl = doc.querySelector('meta[name="viewport"]');
+    var flexibleEl = doc.querySelector('meta[name="flexible"]');
+    var dpr = 0;
+    var scale = 0;
+    var tid;
+    var flexible = lib.flexible || (lib.flexible = {});
 
-        if (metaEl) {
-            console.warn('将根据已有的meta标签来设置缩放比例');
-            var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
-            if (match) {
-                scale = parseFloat(match[1]);
-                dpr = parseInt(1 / scale);
-            }
-        } else if (flexibleEl) {
-            var content = flexibleEl.getAttribute('content');
-            if (content) {
-                var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);
-                var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
-                if (initialDpr) {
-                    dpr = parseFloat(initialDpr[1]);
-                    scale = parseFloat((1 / dpr).toFixed(2));
-                }
-                if (maximumDpr) {
-                    dpr = parseFloat(maximumDpr[1]);
-                    scale = parseFloat((1 / dpr).toFixed(2));
-                }
-            }
+    if (metaEl) {
+      console.warn('将根据已有的meta标签来设置缩放比例');
+      var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
+      if (match) {
+        scale = parseFloat(match[1]);
+        dpr = parseInt(1 / scale);
+      }
+    } else if (flexibleEl) {
+      var content = flexibleEl.getAttribute('content');
+      if (content) {
+        var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);
+        var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
+        if (initialDpr) {
+          dpr = parseFloat(initialDpr[1]);
+          scale = parseFloat((1 / dpr).toFixed(2));
         }
-
-        if (!dpr && !scale) {
-            var isAndroid = win.navigator.appVersion.match(/android/gi);
-            var isIPhone = win.navigator.appVersion.match(/iphone/gi);
-            var devicePixelRatio = win.devicePixelRatio;
-            if (isIPhone) {
-                // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
-                if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
-                    dpr = 3;
-                } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)) {
-                    dpr = 2;
-                } else {
-                    dpr = 1;
-                }
-            } else {
-                // 其他设备下，仍旧使用1倍的方案
-                dpr = 1;
-            }
-            scale = 1 / dpr;
+        if (maximumDpr) {
+          dpr = parseFloat(maximumDpr[1]);
+          scale = parseFloat((1 / dpr).toFixed(2));
         }
+      }
+    }
 
-        docEl.setAttribute('data-dpr', dpr);
-        if (!metaEl) {
-            metaEl = doc.createElement('meta');
-            metaEl.setAttribute('name', 'viewport');
-            metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
-            if (docEl.firstElementChild) {
-                docEl.firstElementChild.appendChild(metaEl);
-            } else {
-                var wrap = doc.createElement('div');
-                wrap.appendChild(metaEl);
-                doc.write(wrap.innerHTML);
-            }
-        }
+    if (!dpr && !scale) {
+      var isAndroid = win.navigator.appVersion.match(/android/gi);
+      var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+      var devicePixelRatio = win.devicePixelRatio;
+      dpr = devicePixelRatio || 1;
+      scale = 1 / dpr;
+    }
 
-        function refreshRem() {
-            var width = docEl.getBoundingClientRect().width;
-            if (width / dpr > 540) {
-                width = 540 * dpr;
-            }
-            var rem = width / 10;
-            docEl.style.fontSize = rem + 'px';
-            flexible.rem = win.rem = rem;
-        }
+    docEl.setAttribute('data-dpr', dpr);
+    if (!metaEl) {
+      metaEl = doc.createElement('meta');
+      metaEl.setAttribute('name', 'viewport');
+      metaEl.setAttribute('content', 'width=device-width,initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+      if (docEl.firstElementChild) {
+        docEl.firstElementChild.appendChild(metaEl);
+      } else {
+        var wrap = doc.createElement('div');
+        wrap.appendChild(metaEl);
+        doc.write(wrap.innerHTML);
+      }
+    }
 
-        win.addEventListener('resize', function () {
-            clearTimeout(tid);
-            tid = setTimeout(refreshRem, 300);
-        }, false);
-        win.addEventListener('pageshow', function (e) {
-            if (e.persisted) {
-                clearTimeout(tid);
-                tid = setTimeout(refreshRem, 300);
-            }
-        }, false);
+    function refreshRem() {
+      var width = docEl.getBoundingClientRect().width;
+      if (width / dpr > 540) {
+        width = 540 * dpr;
+      }
+      var rem = width / 10;
+      docEl.style.fontSize = rem + 'px';
+      flexible.rem = win.rem = rem;
+    }
 
-        if (doc.readyState === 'complete') {
-            doc.body.style.fontSize = 12 * dpr + 'px';
-        } else {
-            doc.addEventListener('DOMContentLoaded', function (e) {
-                doc.body.style.fontSize = 12 * dpr + 'px';
-            }, false);
-        }
+    win.addEventListener('resize', function () {
+      clearTimeout(tid);
+      tid = setTimeout(refreshRem, 300);
+    }, false);
+    win.addEventListener('pageshow', function (e) {
+      if (e.persisted) {
+        clearTimeout(tid);
+        tid = setTimeout(refreshRem, 300);
+      }
+    }, false);
+
+    if (doc.readyState === 'complete') {
+      doc.body.style.fontSize = 12 * dpr + 'px';
+    } else {
+      doc.addEventListener('DOMContentLoaded', function (e) {
+        doc.body.style.fontSize = 12 * dpr + 'px';
+      }, false);
+    }
 
 
-        refreshRem();
+    refreshRem();
 
-        flexible.dpr = win.dpr = dpr;
-        flexible.refreshRem = refreshRem;
-        flexible.rem2px = function (d) {
-            var val = parseFloat(d) * this.rem;
-            if (typeof d === 'string' && d.match(/rem$/)) {
-                val += 'px';
-            }
-            return val;
-        }
-        flexible.px2rem = function (d) {
-            var val = parseFloat(d) / this.rem;
-            if (typeof d === 'string' && d.match(/px$/)) {
-                val += 'rem';
-            }
-            return val;
-        }
-    })(window, window['lib'] || (window['lib'] = {}));
+    flexible.dpr = win.dpr = dpr;
+    flexible.refreshRem = refreshRem;
+    flexible.rem2px = function (d) {
+      var val = parseFloat(d) * this.rem;
+      if (typeof d === 'string' && d.match(/rem$/)) {
+        val += 'px';
+      }
+      return val;
+    }
+    flexible.px2rem = function (d) {
+      var val = parseFloat(d) / this.rem;
+      if (typeof d === 'string' && d.match(/px$/)) {
+        val += 'rem';
+      }
+      return val;
+    }
+  })(window, window['lib'] || (window['lib'] = {}));
+  var polyfillArray = [];
+  if (!window.fetch) {
+    polyfillArray.push('https://cdn.staticfile.org/fetch/2.0.3/fetch.min.js');
+  }
+  if (!window.Promise) {
+    polyfillArray.push('https://cdn.staticfile.org/bluebird/3.5.0/bluebird.min.js');
+  }
+  if (typeof Object.assign !== 'function') {
+    polyfillArray.push('https://cdn.staticfile.org/es6-shim/0.35.3/es6-shim.min.js', 'https://cdn.staticfile.org/es6-shim/0.35.3/es6-sham.min.js');
+  }
+  if (polyfillArray.length > 0) {
+    for (var i = 0; i < polyfillArray.length; i++) {
+      var sNew = document.createElement('script');
+      sNew.async = true;
+      sNew.src = polyfillArray[i];
+      var s0 = document.getElementsByTagName('script')[0];
+      s0.parentNode.insertBefore(sNew, s0);
+    }
+  }
 
 </script>
 
 <body>
-    <div id="app"></div>
+  <div id="app"></div>
 </body>
 
 </html>
