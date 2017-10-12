@@ -3,16 +3,14 @@
 
 <head>
   <meta charset="utf-8">
-  <title>名医主刀</title>
+  <title>我的打工网</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_8ern8tyzw00jxlxr.css">
 </head>
-<!--引入埋点-->
-<script src="//static.myzd.info/h5/collect-h5-1.0.0.min.js"></script>
-<!--移动端UI屏幕大小自适应方案，如果不需要，请删除-->
 <script type="text/javascript">
+  // 移动端UI屏幕大小自适应方案，如果不需要（例如PC端），请删除
   (function (win, lib) {
     var doc = win.document;
     var docEl = doc.documentElement;
@@ -117,6 +115,7 @@
       return val;
     }
   })(window, window['lib'] || (window['lib'] = {}));
+  // 增加各类浏览器的兼容
   var polyfillArray = [];
   if (!window.fetch) {
     polyfillArray.push('https://cdn.staticfile.org/fetch/2.0.3/fetch.min.js');

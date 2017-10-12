@@ -38,6 +38,24 @@ if (__PROD__) {
 }
 
 const boot = (dom) => {
+  window.sessionStorage.setItem('locationStorage', JSON.stringify({}));
+  browserHistory.listen((location) => {
+    console.log(store.getState().state_footer);
+    let locationStorage = JSON.parse(window.sessionStorage.getItem('locationStorage'));
+    let currentPath = location.pathname;
+    if (locationStorage.hasOwnProperty(currentPath)) {
+      location.lastKey = locationStorage[currentPath].key;
+      location.lastAction = locationStorage[currentPath].action;
+    } else {
+      location.lastKey = '';
+      location.lastAction = '';
+    }
+    locationStorage[currentPath] = {
+      key: location.key,
+      action: location.action
+    };
+    window.sessionStorage.setItem('locationStorage', JSON.stringify(locationStorage));
+  });
   ReactDOM.render(
     <Provider store={store}>
       <Router

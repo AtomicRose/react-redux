@@ -12,25 +12,25 @@ const common = require('./common');
 console.log('Process Env: %s', process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'development') {
-  let app = express();
+    let app = express();
 
-  app.use('/static', express.static(common.path.staticDir));
-  app.use(ConnectHistoryApiFallback());
-  var compiler = webpack(config);
-  app.use(WebpackDevMiddleware(compiler, {
-    noInfo: false,
-    publicPath: '/'
-  }));
-  app.use(WebpackHotMiddleware(compiler));
-  app.listen(9000, '127.0.0.1', function (err) {
-    err && console.log(err);
-  });
+    app.use(common.DEPLOY_SERVICE_PATH + '/static', express.static(common.path.staticDir));
+    app.use(ConnectHistoryApiFallback());
+    var compiler = webpack(config);
+    app.use(WebpackDevMiddleware(compiler, {
+        noInfo: false,
+        publicPath: '/'
+    }));
+    app.use(WebpackHotMiddleware(compiler));
+    app.listen(9000, '127.0.0.1', function (err) {
+        err && console.log(err);
+    });
 } else {
-  webpack(config, function (err, stats) {
-    // show build info to console
-    console.log(stats.toString({ chunks: false, color: true }));
+    webpack(config, function (err, stats) {
+        // show build info to console
+        console.log(stats.toString({ chunks: false, color: true }));
 
-    // save build info to file
-    fs.writeFile(path.join(path.join(common.path.rootPath, 'dist'), '__build_info__'), stats.toString({ color: false }));
-  });
+        // save build info to file
+        fs.writeFile(path.join(path.join(common.path.rootPath, 'dist'), '__build_info__'), stats.toString({ color: false }));
+    });
 }

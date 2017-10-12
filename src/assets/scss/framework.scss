@@ -1,8 +1,11 @@
 @import "./mixing/fn.scss";
-@import "./theme/doctor-theme/variables.scss";
-@import "./theme/normalize.scss";
-@import "./theme/button.scss";
-@import "./theme/cell.scss";
-@import "./theme/dialog.scss";
-@import "./theme/form.scss";
-@import "./theme/tips.scss";
+// yourself theme
+// @import "./theme/doctor-theme/variables.scss";
+// @import "./theme/normalize.scss";
+// @import "./theme/button.scss";
+// @import "./theme/cell.scss";
+// @import "./theme/dialog.scss";
+// @import "./theme/form.scss";
+// @import "./theme/tips.scss";
+
+@import "./bootstrap/bootstrap.scss";

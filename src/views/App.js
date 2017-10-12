@@ -8,10 +8,5 @@ const App = ({children, location}) => {
         </div>
     );
 };
-window.IVYCollect.setOptions({
-    appid: __PROD__
-        ? __APP_ID__
-        : __APP_ID__ + '-DEV'
-});
 
 export default App;

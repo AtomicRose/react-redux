@@ -1,6 +1,8 @@
 import boot from 'ROUTE/boot';
 
 // 在应用加载前，进行一些全局处理 增强对时间的处理
+
+// Support Date format
 window.Date.prototype.Format = function (fmt) {
     var o = {
         "M+": this.getMonth() + 1, // 月份
@@ -23,6 +25,32 @@ window.Date.prototype.Format = function (fmt) {
     }
     return fmt;
 };
+
+// Support money format from Number or String.
+const FormatMoney = function (conf) {
+    let opts = Object.assign({}, conf);
+    let mn = parseFloat(this);
+    if (isNaN(mn)) {
+        return '';
+    }
+    if (opts.fixed && typeof opts.fixed === 'number') {
+        mn = mn.toFixed(opts.fixed);
+    }
+    if (opts.comma) {
+        let mstr = mn.toString();
+        let ls = mstr.split('.')[0];
+        let rs = mstr.split('.')[1] || '';
+        let newArray = Array.from(ls).reverse();
+        let newStr = '';
+        for (let i = 0; i < newArray.length; i++) {
+            newStr = newStr + (i > 0 && i % 3 === 0 ? ',' : '') + newArray[i];
+        }
+        mn = Array.from(newStr).reverse().join('') + (rs.length ? '.' : '') + rs;
+    }
+    return mn;
+};
+window.String.prototype.FormatMoney = FormatMoney;
+window.Number.prototype.FormatMoney = FormatMoney;
 
 // 挂载应用
 boot(document.getElementById('app'));

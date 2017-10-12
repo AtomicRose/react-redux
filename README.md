@@ -1,7 +1,8 @@
 # react-redux-framework
 
 ## 更新日志
-当前为最新的稳定版本，还缺少相关开发效率的plugins添加，敬请期待2016-07-18的提交
+当前为最新的稳定版本。 Version 1.1.0
+下一步更新：访问速度优化
 
 ## 使用说明
 
@@ -12,6 +13,20 @@
 ``` shell
 npm install
 ```
+或者用阿里的npm
+``` shell
+cnpm install
+```
+因为项目可能会涉及到 sass 的编译，而 node-sass 的依赖包下载可能会被墙。建议先安装阿里
+### *Step for React or PReact*
+参照
+
+``` javascript
+// 如果要使用react，请将usePreact设置为false。默认根据package.json中是否有preact-compat进行判断
+var usePreact = !!require("../package.json").dependencies['preact-compat'];
+// var usePreact = false;
+```
+
 ### Step3 配置你的应用信息
 * 打开```build/common.js```
 * 修改你的```DEPLOY_SERVICE_PATH``` (服务器相对根目录的发布地址，例如:/doctor) 和 ```APP_ID``` (应用的ID，通常来说指定后不再改变)
@@ -24,17 +39,12 @@ npm run start
 
 ## 编码规范
 
-### 基本规范
-
-* js/html基本编码规范参考WIKI ```https://wiki.myzd.info/pages/viewpage.action?pageId=3309611``` 和 ```https://wiki.myzd.info/pages/viewpage.action?pageId=3866634```
-* 页面埋点规范参照 ```https://git.myzd.info/common/collect-log/tree/master/h5```
-
 ### react-redux 项目规范
 
 #### 代码风格
 
-* 采用Visual Studio Code自带的format工具, Visual Studio Code版本大于1.3.1
-* 代码缩进采用2个空格（照顾到小屏幕的的用户，@何源海）
+* 采用Visual Studio Code自带的format工具, Visual Studio Code版本大于1.3.1。或者采用webstrom
+* 代码缩进采用4个空格
 
 #### 语法规范
 
@@ -144,5 +154,5 @@ import myImg from 'IMAGE/myimg.jpg';
 * action，reducer, store, route, views, service 根据项目树形结构保持目录结构一致，例如路径文件夹命名都为 Document, 相关的内容写在该目录下。
 * 一个action必须为一个文件，且每个action的事务必须保持单例。如：请求列表数据，根据列表数据数量显示不同内容或样式。这里应该是2个action或者只有一个请求列表数据的action，显示不同内容应该在render里面处理
 * views中的树结构应该和routes中的结构一致。对应页面的组成部分（react component）可以放在对应模块的blocks下面。
-* 所有的component function 采用createPureComponent()方法创建。参照```https://gist.github.com/bestmike007/c46fb35ddefc19c616c2aa7d3cf0c226```
+* 所有的component function 采用createPureComponent()方法创建。
 

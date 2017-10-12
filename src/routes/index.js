@@ -7,7 +7,7 @@ import docRoute from './Document/index';
 import homeRoute from './Home/index';
 
 export default {
-  path: 'doctor',
+  path: '/',
   component: require('VIEW/App').default,
   indexRoute: {
     component: createLazyViewLoader(cb => {
